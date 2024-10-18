@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.black,
       ),
       // 设置应用程序的首页为HomeScreen
-      home: HomeScreen(),
+      home: NavScreen(),
     );
   }
 }
