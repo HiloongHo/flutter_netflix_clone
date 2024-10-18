@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_netflix_responsive_ui/cubits/cubits.dart';
 
 import 'screens.dart';
 
@@ -11,7 +13,9 @@ class NavScreen extends StatefulWidget {
 
 class _NavScreenState extends State<NavScreen> {
   final List<Widget> _screens = [
-    const HomeScreen(key: PageStorageKey("HomeScreen"),),
+    const HomeScreen(
+      key: PageStorageKey("HomeScreen"),
+    ),
     const Scaffold(),
     const Scaffold(),
     const Scaffold(),
@@ -30,14 +34,24 @@ class _NavScreenState extends State<NavScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_selectedIndex],
+      body: BlocProvider<AppBarCubit>(
+        create: (_) => AppBarCubit(),
+        child: _screens[_selectedIndex],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.black,
-        items: _icons.map((title, icon) => MapEntry(title, BottomNavigationBarItem(
-          icon: Icon(icon, size: 30,),
-          label:title
-        ))).values.toList(),
+        items: _icons
+            .map((title, icon) => MapEntry(
+                title,
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      icon,
+                      size: 30,
+                    ),
+                    label: title)))
+            .values
+            .toList(),
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
         selectedFontSize: 11.0,

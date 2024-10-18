@@ -40,8 +40,7 @@ class ContentHeader extends StatelessWidget {
           bottom: 110,
           child: SizedBox(
             width: 250,
-            child: Image.asset(
-                featuredContent.titleImageUrl ?? featuredContent.imageUrl),
+            child: Image.asset(featuredContent.titleImageUrl),
           ),
         ),
         // 操作按钮容器，包括添加到列表、播放和信息按钮
@@ -84,8 +83,10 @@ class _PlayButton extends StatelessWidget {
         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       ),
       style: TextButton.styleFrom(
-        foregroundColor: Colors.black, backgroundColor: Colors.white, // 设置文本和图标颜色
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10), // 设置内边距
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.white, // 设置文本和图标颜色
+        padding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 10), // 设置内边距
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0), // 设置圆角
         ),
